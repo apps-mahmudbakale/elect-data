@@ -15,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::whereHas('roles', function($q){
+            $q->where('name', 'agent');
+        })->get();
         return $users;
     }
 

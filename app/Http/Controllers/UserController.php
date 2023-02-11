@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('users.index');
     }
 
     /**
@@ -23,7 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -34,7 +37,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+
+        $user = User::create(array_merge($request->except(['naked', 'password','lg_name']), ['naked' => $request->password, 'lg_name' => $request->lga_name, 'password' => bcrypt($request->password)]));
+        $user->syncRoles($request->input('roles', []));
+        return redirect()->route('users.index')->with('success', 'User Created');
     }
 
     /**
@@ -54,9 +61,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $roles = Role::all();
+        return view('users.edit', compact('roles', 'user'));
     }
 
     /**
@@ -66,10 +74,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
+        $user->syncRoles($request->input('roles', []));
+        return redirect()->route('users.index')->with('success', 'User Updated');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -77,8 +88,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'User Deleted');
     }
 }
