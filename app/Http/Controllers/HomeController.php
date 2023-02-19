@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Http\Livewire\Users;
+use App\Models\ElectData;
+use App\Models\Party;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = User::count();
+        $votes = ElectData::sum('valid_votes');
+        $datas = Party::all();
+        return view('home', compact('users', 'votes', 'datas'));
     }
 }

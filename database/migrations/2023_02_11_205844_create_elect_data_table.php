@@ -18,8 +18,10 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('state_id');
             $table->string('lga_id');
-            $table->string('party');
-            $table->integer('votes');
+            $table->string('unit_id');
+            $table->string('party_id');
+            $table->integer('valid_votes');
+            $table->integer('invalid_votes');
             $table->longText('caption');
             $table->timestamps();
         });

@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('ward_id')->nullable();
             $table->string('unit_name')->nullable();
             $table->integer('unit_id')->nullable();
+            $table->integer('party_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

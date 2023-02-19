@@ -32,6 +32,7 @@ class User extends Authenticatable
         'ward_id',
         'unit_name',
         'unit_id',
+        'party_id',
     ];
 
     /**

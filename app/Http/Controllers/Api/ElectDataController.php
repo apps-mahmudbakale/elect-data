@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\ElectData;
 use Illuminate\Http\Request;
 
 class ElectDataController extends Controller
@@ -35,7 +36,15 @@ class ElectDataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = ElectData::updateOrCreate(
+            ['user_id' => $request->user_id, 'party_id' => $request->party_id, 'state_id' => $request->state_id, 'lga_id' => $request->lga_id, 'unit_id' => $request->unit_id],
+            [
+                'valid_votes' =>$request->valid_votes,
+                'invalid_votes' =>$request->invalid_votes,
+                'caption' =>$request->caption,
+            ]
+            );
+        return response()->json(['success' => true]);
     }
 
     /**

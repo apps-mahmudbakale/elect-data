@@ -16,7 +16,7 @@
             
                 <ul class="nav nav-main">
                     <li>
-                        <a class="nav-link nav-active" href="layouts-default.html">
+                        <a class="nav-link nav-active" href="{{ route('home') }}">
                             <i class="fas fa-home" aria-hidden="true"></i>
                             <span>Dashboard</span>
                         </a>                        
