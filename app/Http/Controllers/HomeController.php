@@ -31,6 +31,7 @@ class HomeController extends Controller
         $users = User::count();
         $votes = ElectData::sum('valid_votes');
         $datas = Party::all();
-        return view('home', compact('users', 'votes', 'datas'));
+        $parties = Party::count();
+        return view('home', compact('users', 'votes', 'datas', 'parties'));
     }
 }

@@ -155,7 +155,7 @@
                 document.querySelector('#state_name').value = text;
                 $.ajax({
                     type: "POST",
-                    url: 'https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/lgaView.php',
+                    url: 'https://crossorigin.me/https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/lgaView.php',
                     data: {
                         state_id: state.value
                     },
@@ -177,7 +177,7 @@
                 document.querySelector('#lga_name').value = text;
                 $.ajax({
                     type: "POST",
-                    url: 'https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/wardView.php',
+                    url: 'https://crossorigin.me/https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/wardView.php',
                     data: {
                         state_id: state.value,
                         lga_id: lga.value
@@ -199,7 +199,7 @@
                 document.querySelector('#ward_name').value = text;
                 $.ajax({
                     type: "POST",
-                    url: 'https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/pollingView.php',
+                    url: 'https://crossorigin.me/https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/pollingView.php',
                     data: {
                         state_id: state.value,
                         lga_id: lga.value,

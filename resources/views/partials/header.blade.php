@@ -29,14 +29,9 @@
             <div class="dropdown-menu">
                 <ul class="list-unstyled mb-2">
                     <li class="divider"></li>
+                    
                     <li>
-                        <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fas fa-user"></i> My Profile</a>
-                    </li>
-                    <li>
-                        <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fas fa-lock"></i> Lock Screen</a>
-                    </li>
-                    <li>
-                        <a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fas fa-power-off"></i> Logout</a>
+                        <a role="menuitem" tabindex="-1" href=""><i class="fas fa-power-off"></i> Logout</a>
                     </li>
                 </ul>
             </div>

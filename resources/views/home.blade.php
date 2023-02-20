@@ -82,7 +82,7 @@
                                         <div class="summary">
                                             <h4 class="title">Parties</h4>
                                             <div class="info">
-                                                <strong class="amount">38</strong>
+                                                <strong class="amount">{{ $parties }}</strong>
                                             </div>
                                         </div>
                                     </div>
