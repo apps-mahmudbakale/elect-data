@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ElectData;
+use App\Models\Party;
 use Illuminate\Http\Request;
 
 class ElectDataController extends Controller
@@ -14,7 +15,7 @@ class ElectDataController extends Controller
      */
     public function index()
     {
-        //
+        return view('datas.index');
     }
 
     /**
@@ -44,9 +45,26 @@ class ElectDataController extends Controller
      * @param  \App\Models\ElectData  $electData
      * @return \Illuminate\Http\Response
      */
-    public function show(ElectData $electData)
+    public function show($id)
     {
-        //
+        $data = ElectData::where('elect_data.id', $id)->join('users', 'users.id', '=', 'elect_data.user_id')->first();
+        // dd($data);
+        $parties = Party::all();
+        return view('datas.show', compact('data', 'parties'));
+    }
+
+
+    public function search(Request $request)
+    {
+        $data = ElectData::where('elect_data.unit_id', $request->unit_id)->join('users', 'users.id', '=', 'elect_data.user_id')->first();
+        // dd($request->all());
+        $parties = Party::all();
+        return view('datas.show', compact('data', 'parties'));
+    }
+
+    public function viewResult()
+    {
+        return view('datas.view');
     }
 
     /**
@@ -78,8 +96,10 @@ class ElectDataController extends Controller
      * @param  \App\Models\ElectData  $electData
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ElectData $electData)
+    public function destroy($id)
     {
-        //
+        $data = ElectData::find($id);
+        $data->delete();
+        return redirect()->route('datas.index')->with('success', 'Data Deleted');
     }
 }

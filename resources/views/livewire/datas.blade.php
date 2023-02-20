@@ -1,11 +1,11 @@
 <div>
     <div class="card-body">
                     
-        <div id="parties_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+        <div id="users_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <div class="dataTables_length" id="parties_length"><label>Show <select wire:model="perPage"
-                                aria-controls="parties"
+                    <div class="dataTables_length" id="users_length"><label>Show <select wire:model="perPage"
+                                aria-controls="datas"
                                 class="custom-select custom-select-sm form-control form-control-sm">
                                 <option value="10">10</option>
                                 <option value="25">25</option>
@@ -14,42 +14,51 @@
                             </select> entries</label></div>
                 </div>
                 <div class="col-sm-12 col-md-5">
-                    <div id="parties_filter" class="dataTables_filter"><label>Search:<input type="search"
+                    <div id="users_filter" class="dataTables_filter"><label>Search:<input type="search"
                                 class="form-control form-control-sm" wire:model.debounce.300ms='search' placeholder=""
-                                aria-controls="parties"></label></div>
+                                aria-controls="datas"></label></div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <table id="parties" class="table table-striped dataTable no-footer"
-                        role="grid" aria-describedby="parties_info">
+                    <table id="datas" class="table table-striped dataTable no-footer"
+                        role="grid" aria-describedby="users_info">
                         <thead>
                             <tr role="row">
                                 <th>S/N</th>
-                                <th>Name</th>
+                                <th>State</th>
+                                <th>LGA</th>
+                                <th>Ward</th>
+                                <th>Polling Unit</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                                @foreach($parties as $party)
+                                @foreach($datas as $data)
                                 <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$party->name}}</td>
+                                <td>{{$data->state_name}}</td>
+                                <td>{{$data->lg_name}}</td>
+                                <td>{{$data->ward_name}}</td>
+                                <td>{{$data->unit_name}}</td>
                                 <td class="text-right">
                                     <span class="dropdown ml-1">
                                         <button class="btn btn-default btn-sm dropdown-toggle align-text-top"
                                             data-boundary="viewport" data-toggle="dropdown">Actions</button>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="{{ route('parties.edit', $party->id) }}">
+                                            <a class="dropdown-item" href="{{ route('datas.show', $data->id) }}">
+                                                Show
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('datas.edit', $data->id) }}">
                                                 Edit
                                             </a>
-                                            <button class="dropdown-item" id="del{{ $party->id }}" data-value="{{ $party->id }}">
+                                            <button class="dropdown-item" id="del{{ $data->id }}" data-value="{{ $data->id }}">
                                                 Delete
                                             </button>
                                         </div>
                                     </span>
                                     <script>
-                                        document.querySelector('#del{{ $party->id }}').addEventListener('click', function(e) {
+                                        document.querySelector('#del{{ $data->id }}').addEventListener('click', function(e) {
                                             // alert(this.getAttribute('data-value'));
                                             Swal.fire({
                                                 title: 'Are you sure?',
@@ -71,8 +80,8 @@
                                             })
                                         })
                                     </script>
-                                    <form id="del#{{ $party->id }}"
-                                        action="{{ route('parties.destroy', $party->id) }}" method="POST"
+                                    <form id="del#{{ $data->id }}"
+                                        action="{{ route('datas.destroy', $data->id) }}" method="POST"
                                          style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -86,12 +95,12 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-5">
-                    <div class="dataTables_info" id="parties_info" role="status" aria-live="polite">Showing <b>{{ $parties->firstItem() }}</b> to
-                        <b>{{ $parties->lastItem() }}</b> out of <b>{{ $parties->total() }}</b> entries</div>
+                    <div class="dataTables_info" id="users_info" role="status" aria-live="polite">Showing <b>{{ $datas->firstItem() }}</b> to
+                        <b>{{ $datas->lastItem() }}</b> out of <b>{{ $datas->total() }}</b> entries</div>
                 </div>
                 <div class="col-sm-12 col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="parties_paginate">
-                        {{ $parties->links() }}
+                    <div class="dataTables_paginate paging_simple_numbers" id="users_paginate">
+                        {{ $datas->links() }}
                     </div>
                 </div>
             </div>

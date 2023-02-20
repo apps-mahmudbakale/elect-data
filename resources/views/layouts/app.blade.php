@@ -17,12 +17,12 @@
     <!-- Scripts -->
     <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="code/highcharts.js"></script>
-<script src="code/modules/data.js"></script>
-<script src="code/modules/drilldown.js"></script>
-<script src="code/modules/exporting.js"></script>
-<script src="code/modules/export-data.js"></script>
-<script src="code/modules/accessibility.js"></script>
+    <script src="{{ asset('code/highcharts.js')}}"></script>
+<script src="{{ asset('code/modules/data.js')}}"></script>
+<script src="{{ asset('code/modules/drilldown.js')}}"></script>
+<script src="{{ asset('code/modules/exporting.js')}}"></script>
+<script src="{{ asset('code/modules/export-data.js')}}"></script>
+<script src="{{ asset('code/modules/accessibility.js')}}"></script>
 </head>
 
 <body>

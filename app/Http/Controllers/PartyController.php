@@ -14,7 +14,7 @@ class PartyController extends Controller
      */
     public function index()
     {
-        //
+        return view('parties.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class PartyController extends Controller
      */
     public function create()
     {
-        //
+        return view('parties.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class PartyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $party =  Party::create($request->all());
+        return redirect()->route('parties.index')->with('success', 'Party Added');
     }
 
     /**
@@ -57,7 +58,8 @@ class PartyController extends Controller
      */
     public function edit(Party $party)
     {
-        //
+        return view('parties.edit', compact('party'));
+       
     }
 
     /**
@@ -69,7 +71,8 @@ class PartyController extends Controller
      */
     public function update(Request $request, Party $party)
     {
-        //
+        $party->update($request->all());
+        return redirect()->route('parties.index')->with('success', 'Party Updated');
     }
 
     /**
@@ -80,6 +83,7 @@ class PartyController extends Controller
      */
     public function destroy(Party $party)
     {
-        //
+        $party->delete();
+        return redirect()->route('parties.index')->with('success', 'Party Deleted');
     }
 }

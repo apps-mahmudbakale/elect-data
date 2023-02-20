@@ -36,6 +36,7 @@ class ElectDataController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $data = ElectData::updateOrCreate(
             ['user_id' => $request->user_id, 'party_id' => $request->party_id, 'state_id' => $request->state_id, 'lga_id' => $request->lga_id, 'unit_id' => $request->unit_id],
             [

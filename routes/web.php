@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PartyController;
+use App\Http\Controllers\ElectDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('users', UserController::class);
+Route::resource('parties', PartyController::class);
+Route::resource('datas', ElectDataController::class);
+Route::get('view-result', [ElectDataController::class, 'viewResult'])->name('datas.view');
+Route::post('view-result', [ElectDataController::class, 'search'])->name('datas.search');

@@ -40,18 +40,22 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="nav-link" href="mailbox-folder.html">
-                            <span class="float-right badge badge-primary">182</span>
+                        <a class="nav-link" href="{{ route('parties.index') }}">
+                            <i class="fas fa-flag" aria-hidden="true"></i>
+                            <span>Parties</span>
+                        </a>                        
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ route('datas.index') }}">
                             <i class="fas fa-table" aria-hidden="true"></i>
                             <span>Elect Data</span>
                         </a>                        
                     </li>
 
                     <li>
-                        <a class="nav-link" href="mailbox-folder.html">
-                            <span class="float-right badge badge-primary">182</span>
+                        <a class="nav-link" href="{{ route('datas.view') }}">
                             <i class="fas fa-chart-bar" aria-hidden="true"></i>
-                            <span>Report</span>
+                            <span>View Result</span>
                         </a>                        
                     </li>
 

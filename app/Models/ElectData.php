@@ -24,4 +24,14 @@ class ElectData extends Model
     {
         return $this->belongsTo(Party::class);
     }
+
+    public function sum_valid($party, $unit)
+    {
+        return $this->where('party_id', $party)->where('unit_id', $unit)->sum('valid_votes');
+    }
+
+    public function sum_invalid($party, $unit)
+    {
+        return $this->where('party_id', $party)->where('unit_id', $unit)->sum('invalid_votes');
+    }
 }
