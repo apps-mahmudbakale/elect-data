@@ -40,8 +40,8 @@
                             <div class="form-group">
                                 <input type="hidden"id="state_name" name="state_name">
                                 State
-                                <select name="state_id" id="state_id" class="form-control">
-                                    <option>Choose State</option>
+                                <select name="state_id" id="state_id" readonly class="form-control">
+                                    {{-- <option>Choose State</option>
                                     <option value="1">ABIA</option>
                                     <option value="2">ADAMAWA</option>
                                     <option value="3">AKWA IBOM</option>
@@ -74,11 +74,11 @@
                                     <option value="29">OSUN</option>
                                     <option value="30">OYO</option>
                                     <option value="31">PLATEAU</option>
-                                    <option value="32">RIVERS</option>
-                                    <option value="33">SOKOTO</option>
-                                    <option value="34">TARABA</option>
+                                    <option value="32">RIVERS</option> --}}
+                                    <option value="33" selected>SOKOTO</option>
+                                    {{-- <option value="34">TARABA</option>
                                     <option value="35">YOBE</option>
-                                    <option value="36">ZAMFARA</option>
+                                    <option value="36">ZAMFARA</option> --}}
                                 </select>
                             </div>
                             <div class="form-group">
@@ -155,7 +155,7 @@
                 document.querySelector('#state_name').value = text;
                 $.ajax({
                     type: "POST",
-                    url: 'https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/lgaView.php',
+                    url: 'https://main.inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/lgaView.php',
                     data: {
                         state_id: state.value
                     },
@@ -177,7 +177,7 @@
                 document.querySelector('#lga_name').value = text;
                 $.ajax({
                     type: "POST",
-                    url: 'https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/wardView.php',
+                    url: 'https://main.inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/wardView.php',
                     data: {
                         state_id: state.value,
                         lga_id: lga.value
@@ -199,7 +199,7 @@
                 document.querySelector('#ward_name').value = text;
                 $.ajax({
                     type: "POST",
-                    url: 'https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/pollingView.php',
+                    url: 'https://main.inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/pollingView.php',
                     data: {
                         state_id: state.value,
                         lga_id: lga.value,

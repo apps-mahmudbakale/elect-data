@@ -16,6 +16,7 @@ class PartiesTableSeeder extends Seeder
     public function run()
     {
         $parties = [
+            'ADP',
             'APC',
             'NNPP',
             'LP',

@@ -1,0 +1,10 @@
+vendor
+composer.lock
+
+.idea
+.phpunit.result.cache
+.*.tmp
+~$*.xlsx
+.DS_Store
+
+examples/**/*.md

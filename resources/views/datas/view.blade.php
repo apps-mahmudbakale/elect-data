@@ -118,7 +118,7 @@
                 
                 $.ajax({
                     type: "POST",
-                    url: 'https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/lgaView.php',
+                    url: 'https://main.inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/lgaView.php',
                     data: {
                         state_id: state.value
                     },
@@ -138,7 +138,7 @@
                 console.log(lga.value);
                 $.ajax({
                     type: "POST",
-                    url: 'https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/wardView.php',
+                    url: 'https://main.inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/wardView.php',
                     data: {
                         state_id: state.value,
                         lga_id: lga.value
@@ -158,7 +158,7 @@
                 console.log(ward.value);
                 $.ajax({
                     type: "POST",
-                    url: 'https://inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/pollingView.php',
+                    url: 'https://main.inecnigeria.org/wp-content/themes/independent-national-electoral-commission/custom/views/pollingView.php',
                     data: {
                         state_id: state.value,
                         lga_id: lga.value,
